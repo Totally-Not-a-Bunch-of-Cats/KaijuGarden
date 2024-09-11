@@ -4,15 +4,22 @@ using UnityEngine;
 
 public class UnitSpawner : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public GameObject Soldiers;
+    public Transform Arena;
+
+    private void Start()
     {
-        
+        StartCoroutine(SpawnCountDown());
     }
 
-    // Update is called once per frame
-    void Update()
+    IEnumerator SpawnCountDown()
     {
-        
+        yield return new WaitForSeconds(5);
+        Spawn();
+    }
+
+    void Spawn()
+    {
+        Instantiate(Soldiers, Arena);
     }
 }
