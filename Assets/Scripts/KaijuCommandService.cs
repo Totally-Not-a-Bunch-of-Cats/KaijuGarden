@@ -5,22 +5,54 @@ using UnityEngine;
 public class KaijuCommandService : MonoBehaviour
 {
 
-    List<Kaiju> kaijus = new List<Kaiju>();
+    List<Kaiju> inactiveKaiju = new List<Kaiju>();
+
+    List<Kaiju> activeKaiju = new List<Kaiju>();
+
+    List<Kaiju> selectedKaiju = new List<Kaiju>();
+
+    EnemyCommandService enemyCommandService;
+
+    private void Start()
+    {
+        selectedKaiju.Add(activeKaiju[0]);
+    }
 
     public void AddKaiju(Kaiju kaiju)
     {
-        kaijus.Add(kaiju);
+        activeKaiju.Add(kaiju);
     }
 
     public void RemoveKaiju(Kaiju kaiju)
     {
-        kaijus.Remove(kaiju);
+        activeKaiju.Remove(kaiju);
+        inactiveKaiju.Add(kaiju);
     }
 
     public void CommandAll(Command command)
     {
         //This should send a command to all available 
-        kaijus.ForEach(kaiju => kaiju.IssueCommand(command));
+        activeKaiju.ForEach(kaiju => kaiju.IssueCommand(command));
         
+    }
+
+    public void CommandSelectedKaiju(Command command)
+    {
+        selectedKaiju.ForEach(kaiju => kaiju.IssueCommand(command));
+    }
+
+    public Command CreateAttackCommand(Transform attackTransform)
+    {
+        return new Command(attackTransform, CommandType.ATTACK);
+    }
+
+    public Command CreateSpecialCommand(Transform specialTransform)
+    {
+        return new Command(specialTransform, CommandType.SPECIAL);
+    }
+
+    public Command CreateRetreatCommand(Transform retreatTransform)
+    {
+        return new Command(retreatTransform, CommandType.RETREAT);
     }
 }

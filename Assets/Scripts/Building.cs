@@ -10,6 +10,7 @@ public class Building : MonoBehaviour
 
     private void OnEnable()
     {
+        Debug.Log(this.gameObject.name);
         commandService.AddBuilding(this);
     }
 

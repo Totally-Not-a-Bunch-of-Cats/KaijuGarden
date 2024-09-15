@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Kaiju : MonoBehaviour
 {
@@ -19,6 +20,8 @@ public class Kaiju : MonoBehaviour
     private void OnEnable()
     {
         commandService.AddKaiju(this);
+        command.goal = GetComponent<Transform>();
+        if (command != null) IssueCommand(command);
     }
 
     private void OnDisable()
@@ -48,6 +51,7 @@ public class Kaiju : MonoBehaviour
     }
 
     public void IssueCommand(Command command) {
+        GetComponent<NavMeshAgent>().destination = command.goal.position;
         this.command = command;
     }
 
