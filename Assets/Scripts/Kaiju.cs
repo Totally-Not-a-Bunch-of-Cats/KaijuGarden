@@ -10,6 +10,8 @@ public class Kaiju : MonoBehaviour
 
     [SerializeField]
     private Command command;
+    [SerializeField]
+    private GameObject TargetUI;
 
     [SerializeField]
     KaijuStatSheet statSheet;
@@ -31,10 +33,11 @@ public class Kaiju : MonoBehaviour
 
     public void ChoosePrioTarget()
     {
-
+        print("click");
+        TargetUI.SetActive(true);
     }
 
-    void ChooseTarget()
+    public void ChooseTarget(TargetType target)
     {
 
     }
