@@ -6,15 +6,14 @@ using UnityEngine;
 public class Building : MonoBehaviour
 {
 
-    [SerializeField] EnemyCommandService commandService;
+    [SerializeField] protected EnemyCommandService commandService;
 
-    private void OnEnable()
+    protected void OnEnable()
     {
-        Debug.Log(this.gameObject.name);
         commandService.AddBuilding(this);
     }
 
-    private void OnDisable()
+    protected void OnDisable()
     {
         commandService.RemoveBuilding(this);
     }
