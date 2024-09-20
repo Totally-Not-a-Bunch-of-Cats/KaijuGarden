@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class KaijuCommandService : MonoBehaviour
 {
-
+    [SerializeField]
     List<Kaiju> inactiveKaiju = new List<Kaiju>();
-
+    [SerializeField]
     List<Kaiju> activeKaiju = new List<Kaiju>();
-
+    [SerializeField]
     List<Kaiju> selectedKaiju = new List<Kaiju>();
 
     EnemyCommandService enemyCommandService;
