@@ -14,4 +14,15 @@ public class UIManager : MonoBehaviour
         //finds the Kaiju Command Service
         commandService = GameObject.FindGameObjectWithTag("KaijuCommand").GetComponent<KaijuCommandService>();
     }
+
+
+
+
+
+
+
+    public void ChangeTarget(Command command)
+    {
+        commandService.CommandSelectedKaiju(command);
+    }
 }
